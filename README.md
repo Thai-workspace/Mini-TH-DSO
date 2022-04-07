@@ -1,98 +1,100 @@
-# Mini-DSO  
-## Preview  
-This is a simple oscilloscope made with STC8A8K MCU. Only servral components and easy to bulit. The functions could cover simple measurement. 
+# Mini-TH-DSO 
+Open Design and Open Source Open Hardware Development By Thai-Dev
+## ดูรีวิวตัวอย่าง 
+นี่คือออสซิลโลสโคปอย่างง่ายที่สร้างด้วย STC8A8K MCU เฉพาะส่วนประกอบเซิร์ฟเวอร์และหัวกระสุนง่าย ฟังก์ชันสามารถครอบคลุมการวัดอย่างง่าย
 ![image](Ver.0.3/img/IMG_6298.jpg)  
-## Specification  
-* MCU: STC8A8K64S4A12 @27MHz  
-* Display: 0.96" OLED with 128x64 resolution  
-* Controller: One EC11 Encoder  
-* Input: Single Channel  
-* Sec/div: 500ms, 200ms, 100ms, 50ms, 20ms, 10ms, 5ms, 2ms, 1ms, 500us, 200us, 100us  
-*`100us only available in Auto Trigger Mode`*  
-* Voltage Range: 0-30V  
-* Sampling Rating: 250kHz @100us/div  
-## Material list  
+## ข้อมูลจำเพาะ 
+MCU: STC8A8K64S4A12 @27MHz
+จอแสดงผล: 0.96" OLED ความละเอียด 128x64
+ตัวควบคุม: ตัวเข้ารหัส EC11 หนึ่งตัว
+อินพุต: ช่องเดียว
+วินาที/div: 500ms, 200ms, 100ms, 50ms, 20ms, 10ms, 5ms, 2ms, 1ms, 500us, 200us, 100us
+100us only available in Auto Trigger Mode
+ช่วงแรงดันไฟฟ้า: 0-30V
+อัตราการสุ่มตัวอย่าง: 250kHz @ 100us/div  
+##รายการวัสดุอุปกรณ์ที่ใช้
 ![image](pic/IMG_6243.jpg)  
-* STC8A8K64S4A12 MCU x 1  
-* SSD1306 OLED(SPI) x 1  
-* Resistor:  
-  * 1W 10k x 1  
-  * 1/4W 2k x 2  
-  * 1/4W 10k x 1
-  * 1/4W 5k x 1  
-* Capacitor:  
-  * 47uF x 1  
-  * 0.01uF x 1  
-* LED x 1
-* EC11 Encoder x 1  
-* Toggle Switch x 1  
-* 2-Pin Terminal x 1  
-* Socket Strip:  
-  * 7-Pin x 1  
-  * 2-Pin x 1  
-* 3.7V Li-ion Battery  
-* 5V Booster Module with charge management
-* USB-TTL Downloader  
-## Interface  
+STC8A8K64S4A12 MCU x 1
+SSD1306 OLED(SPI) x 1
+ตัวต้านทาน:
+1W 10k x 1
+1/4W 2k x 2
+1/4W 10k x 1
+1/4W 5k x 1
+ตัวเก็บประจุ:
+47uF x 1
+0.01uF x 1
+LED x 1
+ตัวเข้ารหัส EC11 x 1
+สวิตช์สลับ x 1
+เทอร์มินัล 2 พิน x 1
+แถบซ็อกเก็ต:
+7 พิน x 1
+2 พิน x 1
+แบตเตอรี่ลิเธียมไอออน 3.7V
+5V Booster Module พร้อมการจัดการการชาร์จ
+ดาวน์โหลด USB-TTL
+## อินเตอร์เฟซ
 ![image](Ver.0.3/img/Main_Interface.jpg)  
 ![image](Ver.0.3/img/Settings_Interface.JPG)  
-### Parameters in Main Interface:  
-* Seconds Per Division: "500ms", "200ms", "100ms", "50ms", "20ms", "10ms","5ms", "2ms", "1ms", "500us", "200us", "100us"  
-  *`100us only available in Auto Trigger Mode.`*
-* Voltage Range: 0-30V.  
-* Trigger Level: Trigger voltage level.  
-* Trigger Slope: Trigger on Rising or Falling Edge.  
-* Trigger Mode: Auto Mode, Normal Mode, Single Mode.  
-### Status in Main Interface:
-* 'Run': Sampling Running.  
-* 'Stop': Sampling Stopped.  
-* 'Fail': The Trigger Level beyond the waveform in Auto Trigger Mode.  
-* 'Auto': Auto Voltage Range.  
-### Parameters in Settings Interface:  
-* PMode(Plot Mode): Show waveform in Vector or Dots.  
-* LSB: Sampling Coefficient. Calibrate the sampling voltage by adjusting LSB.  
-*`100 times of voltage dividing coefficient. e.g. the resistor for voltage dividing is 10k and 2k, calculate the voltage dividing coefficient (10+2)/2=6. Get the LSB = 6 x 100 = 600.`*  
-* BRT(Brightness): Adjust OLED Brightness.  
-## Operations  
+### พารามิเตอร์ในอินเทอร์เฟซหลัก: 
+วินาทีต่อกอง: "500ms", "200ms", "100ms", "50ms", "20ms", "10ms","5ms", "2ms", "1ms", "500us", "200us", "100us" "
+100us only available in Auto Trigger Mode.
+ช่วงแรงดันไฟฟ้า: 0-30V.
+ระดับทริกเกอร์: ระดับแรงดันทริกเกอร์
+ความลาดชันของทริกเกอร์: ทริกเกอร์บนขอบที่เพิ่มขึ้นหรือลดลง
+โหมดทริกเกอร์: โหมดอัตโนมัติ, โหมดปกติ, โหมดเดี่ยว
+### สถานะในอินเทอร์เฟซหลัก:
+'เรียกใช้': การวิ่งสุ่มตัวอย่าง
+'หยุด': การสุ่มตัวอย่างหยุดลง
+'ล้มเหลว': ระดับทริกเกอร์เกินรูปคลื่นในโหมดทริกเกอร์อัตโนมัติ
+'อัตโนมัติ': ช่วงแรงดันไฟฟ้าอัตโนมัติ
+### พารามิเตอร์ในอินเทอร์เฟซการตั้งค่า: 
+PMode (โหมดพล็อต): แสดงรูปคลื่นในเวกเตอร์หรือจุด
+LSB: สัมประสิทธิ์การสุ่มตัวอย่าง ปรับเทียบแรงดันสุ่มตัวอย่างโดยการปรับ LSB
+100 times of voltage dividing coefficient. e.g. the resistor for voltage dividing is 10k and 2k, calculate the voltage dividing coefficient (10+2)/2=6. Get the LSB = 6 x 100 = 600.
+BRT (ความสว่าง): ปรับความสว่าง OLED
+## ปฏิบัติการ
 ![image](Ver.0.3/img/operation.jpg)  
-All operations are completed by the EC11 Encoder. The input include single click, double click, long press, rotate and rotate while pressing. It seems a little complicated, don't worry, there are details below. The resources of this encoder have been almost exhausted. If there are new features, may need additional input component.  
-### Main Interface - Parameter Mode  
-* Single Click Encoder: Run/Stop sampling.  
-* Double Click Encoder: Enter Wave Scroll Mode.  
-* Long Press Encoder: Enter Settings Interface.  
-* Rotate Encoder: Adjust parameters.  
-* Rotate Encoder While Pressing: Switch between options.  
-* Switch Auto and Manual Range: Rotate Encoder clockwise continuous to enter auto range. Rotate Encoder anticlockwise to enter manual range.  
-### Main Interface - Wave Scroll Mode  
-* Single Click Encoder: Run/Stop sampling.  
-* Double Click Encoder: Enter Parameter Mode.  
-* Long Press Encoder: Enter Settings Interface.  
-* Rotate Encoder: Scroll waveform horizontally. (only available when sampling stopped)  
-* Rotate Encoder While Pressing: Scroll waveform vertically (only available when sampling stopped)  
-### Settings Interface  
-* Single Click Encoder: N/A  
-* Double Click Encoder: N/A  
-* Long Press Encoder: Return to Main Interface.  
-* Rotate Encoder: Adjust parameters.  
-* Rotate Encoder While Pressing: Switch between options.  
-## Functions
-* Trigger Level: For repeating signal, trigger level could make it stable on display. For single-shot signal, trigger level could capture it.  
-* Trigger Slope: Trigger slope determines whether the trigger point is on the rising or the falling edge of a signal.  
-* Trigger Mode:
-  * Auto Mode: Sweep continuous. Single click the encoder to stop or run sampling. If triggered, the waveform will be shown on the display and the trigger position will be put at the center of chart. Otherwise, the waveform will scroll irregular, and 'Fail' will be shown on the display.
-  * Normal Mode: When complete pre-sampling, you can input signal. If triggered, waveform shown on the display and waiting for new trigger. If no new trigger, the waveform will be kept.
-  * Single Mode: When complete pre-sampling, you can input signal. If triggered, waveform shown on display and stop sampling. User need to single click Encoder to start next sampling.  
-  * For Normal Mode and Single Mode, be sure the trigger level has been adjusted correctly, otherwise no waveform will be shown on the display.  
-* Indicator: Generally, the indicator on means the sampling is running. The more important use is in Single and Normal Trigger Mode, before get into the trigger stage, pre-sampling is required. The indicator will not on during pre-sampling stage. We should not input signal until the indicator comes on. The longer time scale selected, the longer waiting time of pre-sampling.  
-* Save Settings: When exit settings interface, all parameters in settings and main interface will be saved in EEPROM.  
-## Tutorial  
-* First Version: How to bulit step by step.
-  * Bilibili: https://www.bilibili.com/video/BV1ai4y1t79R  
-  * YouTube: https://youtu.be/c6gBv6Jcz7w  
-  * Instructables: https://www.instructables.com/id/Make-Your-Own-OscilloscopeMini-DSO-With-STC-MCU-Ea/  
-* V0.3: Changes in new version, interduction of interface, operations and functions.
-  * Bilibili: https://www.bilibili.com/video/bv1XV411k7UV  
-  * YouTube: https://youtu.be/-8PadlS7c4c  
-  * Instructables: https://www.instructables.com/id/Upgrade-DIY-Mini-DSO-to-a-Real-Oscilloscope-With-A/  
-## Further plan  
-Since there is sampling jumping issue in STC8A8K, and it is not so popular that hard to find. I decide to transfer this project to STM32. Meanwhile, I will try to find a simple way to measure negative voltage.
+การดำเนินการทั้งหมดเสร็จสิ้นโดย EC11 Encoder อินพุตประกอบด้วยคลิกเดียว, ดับเบิลคลิก, กดแบบยาว, หมุนและหมุนขณะกด ดูเหมือนซับซ้อนเล็กน้อย ไม่ต้องกังวล มีรายละเอียดด้านล่าง ทรัพยากรของตัวเข้ารหัสนี้เกือบหมดแล้ว หากมีคุณสมบัติใหม่ อาจต้องการส่วนประกอบอินพุตเพิ่มเติม
+
+อินเทอร์เฟซหลัก - โหมดพารามิเตอร์
+ตัวเข้ารหัสแบบคลิกเดียว: เรียกใช้/หยุดการสุ่มตัวอย่าง
+Double Click Encoder: เข้าสู่โหมด Wave Scroll
+ตัวเข้ารหัสแบบกดค้าง: เข้าสู่ส่วนต่อประสานการตั้งค่า
+หมุนตัวเข้ารหัส: ปรับพารามิเตอร์
+หมุนตัวเข้ารหัสขณะกด: สลับระหว่างตัวเลือกต่างๆ
+สลับช่วงอัตโนมัติและแบบแมนนวล: หมุนตัวเข้ารหัสตามเข็มนาฬิกาอย่างต่อเนื่องเพื่อเข้าสู่ช่วงอัตโนมัติ หมุนตัวเข้ารหัสทวนเข็มนาฬิกาเพื่อเข้าสู่ช่วงแมนนวล
+อินเทอร์เฟซหลัก - โหมดเลื่อนคลื่น
+ตัวเข้ารหัสแบบคลิกเดียว: เรียกใช้/หยุดการสุ่มตัวอย่าง
+ตัวเข้ารหัสดับเบิลคลิก: เข้าสู่โหมดพารามิเตอร์
+ตัวเข้ารหัสแบบกดค้าง: เข้าสู่ส่วนต่อประสานการตั้งค่า
+Rotate Encoder: เลื่อนรูปคลื่นในแนวนอน (ใช้ได้เฉพาะเมื่อหยุดการสุ่มตัวอย่าง)
+หมุนตัวเข้ารหัสขณะกด: เลื่อนรูปคลื่นในแนวตั้ง (ใช้ได้เฉพาะเมื่อหยุดการสุ่มตัวอย่าง)
+อินเทอร์เฟซการตั้งค่า
+ตัวเข้ารหัสแบบคลิกเดียว: N/A
+ตัวเข้ารหัสดับเบิลคลิก: N/A
+ตัวเข้ารหัสแบบกดค้าง: กลับไปที่อินเทอร์เฟซหลัก
+หมุนตัวเข้ารหัส: ปรับพารามิเตอร์
+หมุนตัวเข้ารหัสขณะกด: สลับระหว่างตัวเลือกต่างๆ
+ฟังก์ชั่น
+ระดับทริกเกอร์: สำหรับสัญญาณที่เกิดซ้ำ ระดับทริกเกอร์อาจทำให้จอแสดงผลมีเสถียรภาพ สำหรับสัญญาณช็อตเดียว ระดับทริกเกอร์สามารถจับได้
+ความชันของทริกเกอร์: ความชันของทริกเกอร์กำหนดว่าจุดทริกเกอร์อยู่บนขอบขาขึ้นหรือขาลงของสัญญาณ
+โหมดทริกเกอร์:
+โหมดอัตโนมัติ: กวาดต่อเนื่อง คลิกครั้งเดียวที่ตัวเข้ารหัสเพื่อหยุดหรือเรียกใช้การสุ่มตัวอย่าง หากทริกเกอร์ รูปคลื่นจะแสดงบนจอแสดงผล และตำแหน่งทริกเกอร์จะอยู่ที่กึ่งกลางของแผนภูมิ มิฉะนั้น รูปคลื่นจะเลื่อนไม่ปกติ และ 'ล้มเหลว' จะแสดงบนจอแสดงผล
+โหมดปกติ: เมื่อทำการสุ่มตัวอย่างล่วงหน้าเสร็จแล้ว คุณสามารถป้อนสัญญาณได้ หากทริกเกอร์ รูปคลื่นจะแสดงบนจอแสดงผลและรอทริกเกอร์ใหม่ หากไม่มีทริกเกอร์ใหม่ รูปคลื่นจะถูกเก็บไว้
+โหมดเดี่ยว: เมื่อทำการสุ่มตัวอย่างล่วงหน้าเสร็จแล้ว คุณสามารถป้อนสัญญาณได้ หากถูกกระตุ้น รูปคลื่นจะแสดงบนจอแสดงผลและหยุดการสุ่มตัวอย่าง ผู้ใช้ต้องคลิกเพียงครั้งเดียว Encoder เพื่อเริ่มการสุ่มตัวอย่างครั้งต่อไป
+สำหรับโหมดปกติและโหมดเดี่ยว ตรวจสอบให้แน่ใจว่าได้ปรับระดับทริกเกอร์อย่างถูกต้อง มิฉะนั้นจะไม่แสดงรูปคลื่นบนจอแสดงผล
+ตัวบ่งชี้: โดยทั่วไป ตัวบ่งชี้บนหมายถึงการสุ่มตัวอย่างกำลังทำงาน การใช้งานที่สำคัญกว่านั้นอยู่ในโหมดทริกเกอร์เดี่ยวและปกติ ก่อนที่จะเข้าสู่สเตจทริกเกอร์ จำเป็นต้องมีการสุ่มตัวอย่างล่วงหน้า ตัวบ่งชี้จะไม่เปิดขึ้นในระหว่างขั้นตอนการสุ่มตัวอย่าง เราไม่ควรป้อนสัญญาณจนกว่าตัวบ่งชี้จะสว่างขึ้น ยิ่งเลือกมาตราส่วนเวลาที่นานขึ้น เวลารอการสุ่มตัวอย่างล่วงหน้านานขึ้น
+บันทึกการตั้งค่า: เมื่อออกจากอินเทอร์เฟซการตั้งค่า พารามิเตอร์ทั้งหมดในการตั้งค่าและอินเทอร์เฟซหลักจะถูกบันทึกไว้ใน EEPROM
+กวดวิชา
+เวอร์ชันแรก: วิธีการ bulit ทีละขั้นตอน
+Bilibili: https://www.bilibili.com/video/BV1ai4y1t79R
+ยูทูบ: https://youtu.be/c6gBv6Jcz7w
+คำแนะนำ: https://www.instructables.com/id/Make-Your-Own-OscilloscopeMini-DSO-With-STC-MCU-Ea/
+V0.3: การเปลี่ยนแปลงในเวอร์ชันใหม่ การแทรกระหว่างอินเทอร์เฟซ การทำงาน และฟังก์ชัน
+บิลิบิลิ: https://www.bilibili.com/video/bv1XV411k7UV
+YouTube: https://youtu.be/-8PadlS7c4c
+คำแนะนำ: https://www.instructables.com/id/Upgrade-DIY-Mini-DSO-to-a-Real-Oscilloscope-With-A/
+แผนเพิ่มเติม
+เนื่องจากมีปัญหาการสุ่มตัวอย่างกระโดดใน STC8A8K และไม่ได้รับความนิยมจนหายาก ฉันตัดสินใจโอนโครงการนี้ไปที่ STM32 ในขณะเดียวกัน ฉันจะพยายามหาวิธีง่ายๆ ในการวัดแรงดันลบ
